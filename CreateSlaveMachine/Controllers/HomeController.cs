@@ -15,7 +15,6 @@ namespace CreateSlaveMachine.Controllers
 
        public string AddSlave()
         {
-
             return "Done";
         }
     }

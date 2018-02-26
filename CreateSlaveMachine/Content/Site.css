@@ -1,6 +1,12 @@
-﻿body {
-    padding-top: 20px;
+﻿html, body {
+    margin-top: 0px;
+    padding-top: 0px;
+    height: 100%;
     padding-bottom: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif  !important;
+    font-weight: 500 !important;
+    font-size:initial !important;
+    /*background-color: #eeeeee !important;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -10,7 +16,7 @@
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+   will truncate terms that are too long to fit in the lefcolumn 
 */
 .dl-horizontal dt {
     white-space: normal;
@@ -25,10 +31,16 @@ textarea {
 
 
 .jumbotron {
+    left: 0;
+    width: 100% !important;
     padding: 0.5em 0.6em;
-    h1 {
-        font-size: 2em;
-    }
+    background-color: mediumturquoise !important;
+    color: white !important;
+    h1
+{
+    font-size: 2em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+}
     
     p {
         font-size: 1.2em;
@@ -36,4 +48,9 @@ textarea {
             padding: 0.5em;
          }
     }
+}
+
+.remove-all-margin-padding {
+    margin: 0 !important;
+    padding: 0 !important;
 }

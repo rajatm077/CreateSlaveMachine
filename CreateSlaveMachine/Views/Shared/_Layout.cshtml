@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add machine to jenkins server</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -27,13 +26,20 @@
                 </div>
             </div>
         </div>*@
-    
-    <div class="container body-content">
-    @RenderBody()
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - InTC Singularity</p>
-    </footer>
+
+    <div class="jumbotron">
+        <div class="container">
+            <img src="~/Content/jenkinslogo.png" height="120" width="85" align="right" />
+            <h1>InTC Singularity</h1>
+            <p class="lead">Add your machine to jenkins server</p>
+        </div>
+    </div>
+     <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - InTC Singularity</p>
+        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

@@ -1,19 +1,27 @@
-﻿<div class="jumbotron">
-    <h1>InTC Singularity</h1>
-    <p class="lead">Add your machine to jenkins server</p>
-</div>
+﻿<title>Home</title>
+
 
 <div class="row">
-    <h2 class="col-md-4">Additional Information</h2>
+    <h3 class="col-md-4">Additional Information</h3>
     <div class="col-md-4">
         <p>
             Configuring Windows Slave node
         </p>
-        <p><a class="btn btn-default" target="_blank" href="https://ustr-wiki-1.na.uis.unisys.com/singularity/index.php/Windows_Node_Configuration">Learn more &raquo;</a></p>
+        <p>
+            <a class="btn btn-default" target="_blank"
+               href="https://ustr-wiki-1.na.uis.unisys.com/singularity/index.php/Windows_Node_Configuration">
+                Learn more &raquo;
+            </a>
+        </p>
     </div>
     <div class="col-md-4">
         <p>Configuring Linux Slave node</p>
-        <p><a class="btn btn-default" target="_blank" href="https://ustr-wiki-1.na.uis.unisys.com/singularity/index.php/Linux_Node_Configuration">Learn more &raquo;</a></p>
+        <p>
+            <a class="btn btn-default" target="_blank"
+               href="https://ustr-wiki-1.na.uis.unisys.com/singularity/index.php/Linux_Node_Configuration">
+                Learn more &raquo;
+            </a>
+        </p>
     </div>
 </div>
 
@@ -21,20 +29,25 @@
 
 
 <div class="panel panel-warning">
-    <div class="panel-heading">Important notice</div>
+    <div class="panel-heading">Perform the following steps before adding slave machine</div>
     <div class="panel-body">
-        <p>
-            1. Install the latest Java 7 or Java 8 JDK before proceding further.
-        </p>
-        <p>
-            2. Download and unzip the latest jssecacerts file from
-            <a href="3rdparty:com.unisys.singularity:jssecerts" target="_blank"> this link</a> into the Java lib/security dir,
-            typically at $JAVA_HOME/jre/lib/security to enable the SSL certificates for the Jenkins server
-        </p>
+        <ol>
+            <p>
+            <li>Install the latest Java 7 or Java 8 JDK before proceding further on the slave machine.</li></p>
+            <p>
+            <li>
+                Download jssecacerts file from
+                <a href="https://ustr-nexus-1.na.uis.unisys.com/content/repositories/thirdparty/com/unisys/singularity/jssecacerts/8.0.112-20340428/"
+                   target="_blank">this link</a> and unzip into the Java lib/security dir,
+                typically at <strong>$JAVA_HOME/jre/lib/security</strong> to enable the SSL certificates for the Jenkins
+                server.
+            </li>
+            </p>
+        </ol>
     </div>
 </div>
 
-   
+
 <div class="col-sm-12 text-center">
     <button id="showFormDiv" class="btn btn-primary btn-lg">
         Add Slave
@@ -44,6 +57,18 @@
 <div id="showFormDiv" hidden>
     @Html.Partial("_AddSlave")
 </div>
+
+<div id="infoDiv" class="panel panel-info" hidden>
+    <div class="panel-heading">Info</div>
+    <div class="panel-body">
+        <p>
+            For advanced configuration, please send a mail to
+            <a href="mailto:TechnologyInTCSingularity@unisys.com">InTC Singularity</a>.
+            Thank you.
+        </p>
+    </div>
+</div>
+
 
 @Scripts.Render("~/bundles/jquery")
 
@@ -56,6 +81,7 @@
     showform = function (e) {
         $(this).hide();
         $("div#showFormDiv").show();
+        $("div#infoDiv").show();
     }
 
 </script>
