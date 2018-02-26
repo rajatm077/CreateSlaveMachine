@@ -1,0 +1,130 @@
+﻿@model CreateSlaveMachine.Models.Slave
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Provide slave machine information</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Machine, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Machine, new { htmlAttributes = new { @class = "form-control",
+                    placeholder = "e.g. ustr-erl2-1234.na.uis.unisys.com" } })
+
+                @Html.ValidationMessageFor(model => model.Machine, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OS, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.OS, "Select OS", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OS, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" }) &nbsp;
+
+
+                <a href="#" data-toggle="popover" data-trigger="focus"
+                   data-content="Name that uniquely identifies an agent within this Jenkins installation.
+                   Can be same as the agent hostname">
+                    <img src="~/Content/help.png" height="16" width="16" />
+                </a>
+            </div>
+
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.LabelFor(model => model.Rrd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Rrd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Rrd, "", new { @class = "text-danger" }) &nbsp;
+
+                <a href="#" data-toggle="popover" data-trigger="focus"
+                   data-content="The location on slave machine where jenkins files will be stored. For linux default is: /root/jenkins.
+                   For windows default is c:\jenkins, but if your machine has more than one drive (e.g E:\) then provide
+                   E:\jenkins. This should be a path local to the agent machine.">
+                    <img src="~/Content/help.png" height="16" width="16" />
+                </a>
+
+            </div>
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.LabelFor(model => model.Label, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Label, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Label, "", new { @class = "text-danger" }) &nbsp;
+                
+                <a href="#" data-toggle="popover" data-trigger="focus"
+                   data-content="Labels (or tags) are used to group multiple agents into one logical group.
+                   For example, if you have multiple Windows agents and you have a job that must run on Windows,
+                   then you could configure all your Windows agents to have the label windows, and then tie that job to this label.
+                   This would ensure that your job runs on one of your Windows agents, but not on any agents without this label.">
+
+                    <img src="~/Content/help.png" height="16" width="16" />
+                </a>
+            
+            </div>
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.LabelFor(model => model.Threads, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Threads, new { htmlAttributes = new { @class = "form-control", @Value = 2, @Min = 1, @Max = 5 } })
+                @Html.ValidationMessageFor(model => model.Threads, "", new { @class = "text-danger" }) &nbsp;
+
+
+                <a href="#" data-toggle="popover" data-trigger="focus" 
+                   data-content="The maximum number of concurrent builds that Jenkins may perform on this agent.
+                   Agents must have at least one executor.(Max = 5)">             
+                    <img src="~/Content/help.png" height="16" width="16" />
+                </a>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@Scripts.Render("~/bundles/jquery")
+<script>
+    $(document).ready(function () {
+
+        $('a[href^="#"]').click(function (e) {
+            e.preventDefault();
+        });
+
+        $('[data-toggle="popover"]').popover({
+            container: 'body'
+        });
+
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
